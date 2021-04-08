@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Friendly</title>
+    <title><%= full_title(yield(:title)) %> </title>
+    <meta charset="utf-8">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +11,9 @@
   </head>
 
   <body>
+  <%= render 'layouts/header' %>
+  <div class="container">
     <%= yield %>
+    </div>
   </body>
 </html>
