@@ -23,9 +23,17 @@ User.create!(first_name: "Example",
             User.create!(first_name: first_name, last_name: last_name, email: email, password: password, password_confirmation: password)
         end 
 
-        #generate microposts for 10 users
+        #generate microposts
         users = User.order(:created_at).take(10)
         50.times do 
             content = Faker::Lorem.sentence(word_count: 10)
             users.each { |user| user.microposts.create!(content: content) }
         end 
+
+        #create following relationships
+        users = User.all 
+        user = users.first 
+        following = users[2..50]
+        followers = users[3..40]
+        followers.each { |followed| user.follow(followed) }
+        followers.each { |follower| follower.follow(user) }
