@@ -7,7 +7,7 @@ class User < ApplicationRecord
 
     before_save { self.email = email.downcase }
 
-    
+
     validates :first_name, presence: true, length: { maximum: 50 }
     validates :last_name, presence: true, length: { maximum: 50 }
 
@@ -22,5 +22,21 @@ class User < ApplicationRecord
     def feed 
         Micropost.where("user_id = ?", id)
     end 
+
+    #follow a user
+    def follow(other_user)
+        following << other_user
+    end
+
+    #unfollows a user
+    def unfollow(other_user)
+        following.delete(other_user)
+    end
+
+    #returns true if the current user is following the other user
+    def following?(other_user)
+        following.include?(other_user)
+    end 
+
 
 end
