@@ -1,24 +1,21 @@
-# README
+# FRIENDLY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+App features:
 
-Things you may want to cover:
+- User pages with profile pictures
+- Microposts (featuring a 140 character limit, a la Twitter) for users
+- Ability to follow/be followed by users
+- Image uploads for microposts
 
-* Ruby version
+# Getting started
+To get started with the app, clone the repo and then install the needed gems:
 
-* System dependencies
+* bundle install --without production
 
-* Configuration
 
-* Database creation
+Next, migrate the database:
+* rails db:migrate
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* rails server
+and launch the sample app on http://localhost:3000.
